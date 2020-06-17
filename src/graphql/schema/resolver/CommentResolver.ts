@@ -1,7 +1,7 @@
 import { ResolverService } from '@tsed/graphql';
 import { Arg, Int, Query, Mutation } from 'type-graphql';
 import { Comment } from '../type/Comment';
-import { CommentRepository } from '../../../repository/CommentResolver';
+import { CommentRepository } from '../../../repository/CommentRepository';
 import { AddCommentInput } from '../type/AddCommentInput';
 
 @ResolverService(Comment)
