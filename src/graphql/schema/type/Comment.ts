@@ -13,5 +13,5 @@ export class Comment {
   content: string;
 
   @Field(type => Post)
-  post: Promise<Post>;
+  post: Post;
 }

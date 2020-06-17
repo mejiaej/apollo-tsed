@@ -40,6 +40,7 @@ const rootDir = __dirname;
       username: process.env.POSTGRES_USER || 'user',
       password: process.env.POSTGRES_PASSWORD || 'changeme',
       entities: [`${rootDir}/entity/*{.ts,.js}`],
+      logging: true,
     },
   ],
   exclude: ['**/*.spec.ts'],
