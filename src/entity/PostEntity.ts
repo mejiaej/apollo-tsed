@@ -1,8 +1,8 @@
 import { Column, Entity, PrimaryColumn, OneToMany } from 'typeorm';
-import { Comment } from './Comment';
+import { CommentEntity } from './CommentEntity';
 
 @Entity({ name: "post"})
-export class Post {
+export class PostEntity {
   @PrimaryColumn()
   id: number;
 
@@ -12,6 +12,6 @@ export class Post {
   @Column()
   content: string;
 
-  @OneToMany(type => Comment, comment => comment.post)
-  comments: Promise<Comment[]>;
+  @OneToMany(type => CommentEntity, comment => comment.post)
+  comments: Promise<CommentEntity[]>;
 }

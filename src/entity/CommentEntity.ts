@@ -1,8 +1,8 @@
 import { Column, Entity, PrimaryColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { Post } from './Post';
+import { PostEntity } from './PostEntity';
 
 @Entity({ name: 'comment' })
-export class Comment {
+export class CommentEntity {
   @PrimaryColumn()
   id: number;
 
@@ -12,7 +12,7 @@ export class Comment {
   @Column()
   content: string;
 
-  @ManyToOne(type => Post, post => post.comments)
+  @ManyToOne(type => PostEntity, post => post.comments)
   @JoinColumn({ name: 'post_id'})
-  post: Promise<Post>;
+  post: Promise<PostEntity>;
 }

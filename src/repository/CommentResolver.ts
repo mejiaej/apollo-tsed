@@ -1,9 +1,9 @@
 import { Repository, EntityRepository } from 'typeorm';
-import { Comment } from './../entity/Comment';
+import { CommentEntity } from '../entity/CommentEntity';
 
-@EntityRepository(Comment)
-export class CommentRepository extends Repository<Comment> {
-  findCommentsByPostId(postId: number): Promise<Comment[]> {
+@EntityRepository(CommentEntity)
+export class CommentRepository extends Repository<CommentEntity> {
+  findCommentsByPostId(postId: number): Promise<CommentEntity[]> {
     const comments = this.createQueryBuilder('comment')
       .leftJoinAndSelect('comment.post', 'post')
       .where('post.id = :postId', { postId })
