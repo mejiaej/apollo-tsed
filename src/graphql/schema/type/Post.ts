@@ -13,5 +13,5 @@ export class Post {
   public content: string;
 
   @Field(type => [Comment])
-  comments: Promise<Comment[]>;
+  comments: Comment[];
 }

@@ -1,9 +1,9 @@
-import { Column, Entity, PrimaryColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, JoinColumn, PrimaryGeneratedColumn } from 'typeorm';
 import { PostEntity } from './PostEntity';
 
 @Entity({ name: 'comment' })
 export class CommentEntity {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ name: 'owner_name' })
@@ -12,7 +12,10 @@ export class CommentEntity {
   @Column()
   content: string;
 
+  @Column({ name: 'post_id', nullable: true })
+  postId: number;
+
   @ManyToOne(type => PostEntity, post => post.comments)
   @JoinColumn({ name: 'post_id'})
-  post: Promise<PostEntity>;
+  post: PostEntity;
 }
