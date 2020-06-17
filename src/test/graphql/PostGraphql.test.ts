@@ -2,6 +2,8 @@ import { PlatformTest } from '@tsed/common';
 import * as SuperTest from 'supertest';
 import { Server } from '../../Server';
 import { Post } from '../../graphql/schema/type/Post';
+import { POSTS_QUERY } from '../fixtures/PostFixture';
+import { GRAPH_QL_ENDPOINT } from '../fixtures';
 
 describe('Post Graphql', () => {
   // bootstrap your Server to load all endpoints before run your test
@@ -16,19 +18,9 @@ describe('Post Graphql', () => {
   describe('Query posts', () => {
     it('should return posts', async () => {
       const response = await request
-        .post('/graphql')
+        .post(GRAPH_QL_ENDPOINT)
         .send({
-          query: `{
-        posts {
-          id,
-          content,
-          ownerName,
-          comments {
-            id,
-            content
-          }
-        }
-      }`,
+          query: POSTS_QUERY,
         })
         .expect(200);
       const posts = response.body.data.posts as Post[];
@@ -39,7 +31,7 @@ describe('Post Graphql', () => {
 
       const { comments } = posts[1];
       expect(comments.length).toBeGreaterThan(0);
-      
+
       expect(comments[0]).toHaveProperty('id');
       expect(comments[0].id).toBeGreaterThan(0);
 

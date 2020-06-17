@@ -2,8 +2,12 @@ import { PlatformTest } from '@tsed/common';
 import * as SuperTest from 'supertest';
 import { Server } from '../../Server';
 import { Comment } from '../../graphql/schema/type/Comment';
-import { AddCommentInput } from '../../graphql/schema/type/AddCommentInput';
-import { removePropertyQuotes } from '../utilts';
+import {
+  COMMENTS_BY_POST_ID_QUERY,
+  ADD_COMMENT_MUTATION,
+  NEW_COMMENT,
+} from '../fixtures/CommentFixture';
+import { GRAPH_QL_ENDPOINT } from '../fixtures';
 
 describe('Post Graphql', () => {
   // bootstrap your Server to load all endpoints before run your test
@@ -18,15 +22,9 @@ describe('Post Graphql', () => {
   describe('comment', () => {
     it('executes query comments for postId 1', async () => {
       const response = await request
-        .post('/graphql')
+        .post(GRAPH_QL_ENDPOINT)
         .send({
-          query: `{
-            comments (postId: 1) {
-              id,
-              content,
-              ownerName
-            }
-          }`,
+          query: COMMENTS_BY_POST_ID_QUERY,
         })
         .expect(200);
       const comments = response.body.data.comments as Comment[];
@@ -43,25 +41,11 @@ describe('Post Graphql', () => {
 
   describe('mutation addComment', () => {
     it('executes addComment mutation', async () => {
-      const newComment: AddCommentInput = {
-        ownerName: 'testOwner',
-        content: 'test content',
-        postId: 2,
-      };
-
       // TODO: research about console.warn when performing mutation
       const response = await request
-        .post('/graphql')
+        .post(GRAPH_QL_ENDPOINT)
         .send({
-          query: `mutation {
-            addComment(newComment: ${removePropertyQuotes(
-              JSON.stringify(newComment)
-            )}) {
-              id,
-              content,
-              ownerName
-            }
-          }`,
+          query: ADD_COMMENT_MUTATION,
         })
         .expect(200);
 
@@ -71,10 +55,10 @@ describe('Post Graphql', () => {
       expect(addComment.id).toBeGreaterThan(0);
 
       expect(addComment).toHaveProperty('content');
-      expect(addComment.content).toBe(newComment.content);
+      expect(addComment.content).toBe(NEW_COMMENT.content);
 
       expect(addComment).toHaveProperty('ownerName');
-      expect(addComment.ownerName).toBe(newComment.ownerName);
+      expect(addComment.ownerName).toBe(NEW_COMMENT.ownerName);
     });
   });
 });
