@@ -22,6 +22,18 @@ $ yarn start
 ```
 ![alt text](https://gist.githubusercontent.com/mejiaej/8f5181e4ccb5d8dbd3020d7113f088cc/raw/376e8ede83036406586f92943934e3521fca639a/graphql.PNG?raw=true)
 
+## Integration tests
+```batch
+1. install dependencies
+$ yarn install
+
+2. docker services (postgres db)
+$ docker-compose build
+$ docker-compose up
+
+3. run integration tests
+$ yarn test
+```
 
 ## Production setup
 > **NOTE**: Graphql playground not available in production mode
