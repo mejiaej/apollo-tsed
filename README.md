@@ -1,21 +1,20 @@
 # apollo-tsed
+> **Important!** Ts.ED requires Node >= 10, Express >= 4 and TypeScript >= 3.
 
-> An awesome project based on Ts.ED framework
+Example project using Ts.ED framework, Apollo GraphQL and TypeOrm
 
 See [Ts.ED](https://tsed.io) project for more information.
 
-## Build setup
-
-> **Important!** Ts.ED requires Node >= 10, Express >= 4 and TypeScript >= 3.
+## Development setup
 
 ```batch
-# install dependencies
+1. install dependencies
 $ yarn install
 
-# serve
-$ yarn start
+2. docker services (postgres db)
+$ docker-compose build
+$ docker-compose up
 
-# build for production
-$ yarn build
-$ yarn start:prod
+3. serve
+$ yarn start
 ```
