@@ -20,7 +20,7 @@ $ yarn start
 
 4. Go to http://localhost:8083/graphql
 ```
-
+![alt text](https://gist.githubusercontent.com/mejiaej/8f5181e4ccb5d8dbd3020d7113f088cc/raw/376e8ede83036406586f92943934e3521fca639a/graphql.PNG?raw=true)
 
 
 ## Production setup
