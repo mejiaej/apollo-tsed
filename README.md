@@ -28,6 +28,7 @@ $ yarn start
 
 ```batch
 1. build
+$ yarn install
 $ yarn build
 
 2. docker services
@@ -36,3 +37,4 @@ $ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 
 3. graphql server ready in http://localhost:8083/graphql
 ```
+> **NOTE**: Remember to stop docker containers if testing locally
