@@ -1,0 +1,25 @@
+version: '3.5'
+services:
+  server:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        - http_proxy
+        - https_proxy
+        - no_proxy
+    image: 'apollo-tsed/server:latest'
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_DB: apollo
+      POSTGRES_SCHEMA: blog
+    ports:
+      - 8083:8083
+    stdin_open: true
+    tty: true
+    depends_on:
+      - postgres
+    networks: 
+      - apollo-tsed-network

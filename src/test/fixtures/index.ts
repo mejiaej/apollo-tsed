@@ -1,0 +1,1 @@
+export const GRAPH_QL_ENDPOINT = '/graphql';

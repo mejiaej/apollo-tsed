@@ -3,7 +3,7 @@ import { Post } from './Post';
 
 @ObjectType()
 export class Comment {
-  @Field(() => ID)
+  @Field()
   id: number;
 
   @Field()
@@ -13,5 +13,5 @@ export class Comment {
   content: string;
 
   @Field(type => Post)
-  post: Promise<Post>;
+  post: Post;
 }
