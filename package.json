@@ -14,7 +14,7 @@
   "dependencies": {
     "@tsed/ajv": "5.57.7",
     "@tsed/common": "5.57.7",
-    "@tsed/core": "5.57.7",
+    "@tsed/core": "5.65.7",
     "@tsed/di": "5.57.7",
     "@tsed/graphql": "5.57.7",
     "@tsed/platform-express": "5.57.7",
